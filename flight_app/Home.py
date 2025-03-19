@@ -3,7 +3,14 @@ import os
 import joblib
 
 # Define model path relative to the working directory
-model_path = os.path.join(os.getcwd(), "flight_app/models", "xgb_tree_model2.joblib")
+import os
+
+# Use relative path (Streamlit Cloud expects your files to be inside the working directory)
+model_path = os.path.join("flight_app", "models", "xgb_tree_model2.joblib")
+
+# Check if the model exists
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"🚨 Model file not found: {model_path}")
 
 # Function to load the model with caching
 
