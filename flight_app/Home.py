@@ -3,7 +3,7 @@ import os
 import joblib
 
 # Define model path relative to the working directory
-model_path = os.path.join(os.getcwd(), "models", "xgb_tree_model2.joblib")
+model_path = os.path.join(os.getcwd(), "flight_app/models", "xgb_tree_model2.joblib")
 
 # Function to load the model with caching
 
