@@ -152,16 +152,21 @@ def get_weather_icon_url(dep_weather, sched_dep):
 # ------------------------------
 
 
-# @st.cache_resource
-# def load_model():
-#     # return joblib.load(r'Python\Capstone\Final\CODE\flight_app\pages\xgb_tree_model2.joblib')
-#     return joblib.load("xgb_tree_model2.joblib")
-
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_model():
-    return joblib.load("xgb_tree_model2.joblib")
+    model_path = "flight_app/models/xgb_tree_model2.joblib"  # Adjust if needed
+
+    if not os.path.exists(model_path):
+        st.error(f"Model file not found: {model_path}. Please check the file path.")
+        return None
+
+    return joblib.load(model_path)
 
 model = load_model()
+if model is None:
+    st.stop()  # Stop execution if model is missing
+
+
 
 
 
