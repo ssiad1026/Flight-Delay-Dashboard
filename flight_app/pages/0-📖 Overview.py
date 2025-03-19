@@ -51,7 +51,7 @@ st.markdown(
 
 @st.cache_data
 def load_data():
-   path = "flight_app/data" 
+   path = "flight_app/data"
 
     parquet_files = glob.glob(os.path.join(path, '*.parquet'))
     if not parquet_files:
