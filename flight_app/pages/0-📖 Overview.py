@@ -51,7 +51,8 @@ st.markdown(
 
 @st.cache_data
 def load_data():
-    path = r'C:\Users\SSSIA\Python\Capstone\Final\DATA\2018\Flights'
+   path = "data"  
+
     parquet_files = glob.glob(os.path.join(path, '*.parquet'))
     if not parquet_files:
         st.error("No parquet files found in the specified directory!")
