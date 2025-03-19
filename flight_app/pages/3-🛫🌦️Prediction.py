@@ -152,13 +152,19 @@ def get_weather_icon_url(dep_weather, sched_dep):
 # ------------------------------
 
 
-@st.cache_resource
+# @st.cache_resource
+# def load_model():
+#     # return joblib.load(r'Python\Capstone\Final\CODE\flight_app\pages\xgb_tree_model2.joblib')
+#     return joblib.load("xgb_tree_model2.joblib")
+
+@st.cache(allow_output_mutation=True)
 def load_model():
-    # return joblib.load(r'Python\Capstone\Final\CODE\flight_app\pages\xgb_tree_model2.joblib')
     return joblib.load("xgb_tree_model2.joblib")
 
-
 model = load_model()
+
+
+
 
 # ------------------------------------------------------------------------------
 # Store flights in session_state so they persist across reruns
