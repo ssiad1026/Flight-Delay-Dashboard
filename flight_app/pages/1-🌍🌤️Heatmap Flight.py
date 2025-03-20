@@ -325,7 +325,7 @@ col_map, col_table = st.columns([0.56, 0.44])
 with col_map:
     st.markdown("<h4 style='font-size:16px;'>Flight Delay Map</h4>",
                 unsafe_allow_html=True)
-    folium_static(map_result, width=600, height=500)
+    folium_static(map_result, width=700, height=500)
 
 with col_table:
     st.markdown("<h4 style='font-size:16px;'>Top Airports and Top Airlines</h4>",
