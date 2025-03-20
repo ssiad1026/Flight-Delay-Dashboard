@@ -40,7 +40,7 @@ def get_nearest_station(lat, lon):
     querystring = {"lat": str(lat), "lon": str(lon)}
     headers = {
         # replace with your key
-        "x-rapidapi-key": "07d021768cmsh741ad8498126e28p1cc1c0jsnefb188cee2e1",
+        "x-rapidapi-key": "e9dbca61bbmshc096f85c7a8d536p1a271djsn716d701a9648",
         "x-rapidapi-host": "meteostat.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
@@ -64,7 +64,7 @@ def get_weather_for_time(lat, lon, target_time):
     querystring = {"station": station, "start": date_str, "end": date_str}
     headers = {
         # replace with your key
-        "x-rapidapi-key": "07d021768cmsh741ad8498126e28p1cc1c0jsnefb188cee2e1",
+        "x-rapidapi-key": "31464ac9a7msh75dff156d129a3dp1070a2jsn5e905529d890",
         "x-rapidapi-host": "meteostat.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
@@ -96,7 +96,7 @@ def get_airport_info(iata_code):
     querystring = {"iata": iata_code}
     headers = {
         # replace with your key
-        "x-rapidapi-key": "07d021768cmsh741ad8498126e28p1cc1c0jsnefb188cee2e1",
+        "x-rapidapi-key": "31464ac9a7msh75dff156d129a3dp1070a2jsn5e905529d890",
         "x-rapidapi-host": "airport-info.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
@@ -118,7 +118,7 @@ def get_flight_schedules(dep_iata, flight_date):
     }
     headers = {
         # replace with your token
-        "Authorization": "Bearer 7239|YsgEg76Aa1HthXy7xOX6xbCvzSp0HlPFPKXKelGH"
+        "Authorization": "Bearer 6897|ZHd6FyyVpt850mJp4eKhCPR7yRD34xg7nL83H7U4"
     }
     response = requests.get(url, headers=headers, params=params)
     if response.status_code == 200:
@@ -154,22 +154,11 @@ def get_weather_icon_url(dep_weather, sched_dep):
 
 @st.cache_resource
 def load_model():
-    model_path = "flight_app/models/xgb_tree_model2.joblib"  # Adjust if needed
+    # return joblib.load(r'Python\Capstone\Final\CODE\flight_app\pages\xgb_tree_model2.joblib')
+    return joblib.load("xgb_tree_model2.joblib")
 
-    if not os.path.exists(model_path):
-        st.error(f"Model file not found: {model_path}. Please check the file path.")
-        return None
-
-    return joblib.load(model_path)
 
 model = load_model()
-if model is None:
-    st.stop()  # Stop execution if model is missing
-
-
-
-
-
 
 # ------------------------------------------------------------------------------
 # Store flights in session_state so they persist across reruns
