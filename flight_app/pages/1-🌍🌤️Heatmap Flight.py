@@ -135,12 +135,22 @@ def plot_flight_delays(date, threshold, top_airports_count, min_flights_threshol
         circle_color = to_hex(colormap(norm(delay_rate)))
 
         # Function to replace NaN with "-" and format values with units
+        # def safe_value(val, unit=""):
+        #     if pd.isna(val):
+        #         return "-"
+        #     if unit:
+        #         return f"{val:.1f} {unit}"
+        #     return val
+
         def safe_value(val, unit=""):
             if pd.isna(val):
                 return "-"
+            if unit == "cm":
+                return f"{val / 10:.1f} {unit}"  # Convert snow depth by dividing by 10
             if unit:
                 return f"{val:.1f} {unit}"
             return val
+
 
         # Determine weather icon based on weather conditions:
         weather_icon_html = ""
